@@ -1,0 +1,20 @@
+{
+  "version": "16.0.0",
+  "files": {
+    "eaf6b1b4351c8bc4c6befa45797bc40d746ca8494e8b6f90840b73ff1c54567a": {
+      "source": {
+        "path": "pgi-basic-cdk-v2-setup.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "926405661193-ap-south-1": {
+          "bucketName": "cdk-hnb659fds-assets-926405661193-ap-south-1",
+          "objectKey": "eaf6b1b4351c8bc4c6befa45797bc40d746ca8494e8b6f90840b73ff1c54567a.json",
+          "region": "ap-south-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::926405661193:role/cdk-hnb659fds-file-publishing-role-926405661193-ap-south-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

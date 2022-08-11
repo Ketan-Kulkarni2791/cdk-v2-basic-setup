@@ -1,0 +1,151 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.0.0"
+        }
+      },
+      "pgi-basic-cdk-v2-setup": {
+        "id": "pgi-basic-cdk-v2-setup",
+        "path": "pgi-basic-cdk-v2-setup",
+        "children": {
+          "cdk-v2-basic-user-id": {
+            "id": "cdk-v2-basic-user-id",
+            "path": "pgi-basic-cdk-v2-setup/cdk-v2-basic-user-id",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "pgi-basic-cdk-v2-setup/cdk-v2-basic-user-id/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::User",
+                  "aws:cdk:cloudformation:props": {
+                    "groups": [
+                      {
+                        "Ref": "cdkv2basicgroupid6C04AF94"
+                      }
+                    ],
+                    "managedPolicyArns": [
+                      {
+                        "Ref": "cdkv2basicdataaccesspolicyid6C2DCF98"
+                      }
+                    ],
+                    "userName": "cdk-v2-basic-iam-user"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnUser",
+                  "version": "2.16.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.User",
+              "version": "2.16.0"
+            }
+          },
+          "cdk-v2-basic-group-id": {
+            "id": "cdk-v2-basic-group-id",
+            "path": "pgi-basic-cdk-v2-setup/cdk-v2-basic-group-id",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "pgi-basic-cdk-v2-setup/cdk-v2-basic-group-id/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Group",
+                  "aws:cdk:cloudformation:props": {
+                    "groupName": "cdk-v2-basic-iam-group"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnGroup",
+                  "version": "2.16.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Group",
+              "version": "2.16.0"
+            }
+          },
+          "cdk-v2-basic-data-access-policy-id": {
+            "id": "cdk-v2-basic-data-access-policy-id",
+            "path": "pgi-basic-cdk-v2-setup/cdk-v2-basic-data-access-policy-id",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "pgi-basic-cdk-v2-setup/cdk-v2-basic-data-access-policy-id/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::ManagedPolicy",
+                  "aws:cdk:cloudformation:props": {
+                    "policyDocument": {
+                      "Statement": [
+                        {
+                          "Action": [
+                            "iam:DeleteAccessKey",
+                            "iam:GetAccessKeyLastUsed",
+                            "iam:UpdateAccessKey",
+                            "iam:CreateAccessKey",
+                            "iam:ListAccessKey"
+                          ],
+                          "Effect": "Allow",
+                          "Resource": [
+                            "arn:aws:iam::926405661193:user/${aws:username}",
+                            "arn:aws:iam::926405661193:user/cdk_basic/${aws:username}"
+                          ]
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "description": "",
+                    "path": "/"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnManagedPolicy",
+                  "version": "2.16.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.ManagedPolicy",
+              "version": "2.16.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "pgi-basic-cdk-v2-setup/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "pgi-basic-cdk-v2-setup/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.16.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.0.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.16.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.16.0"
+    }
+  }
+}

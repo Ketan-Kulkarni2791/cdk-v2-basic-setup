@@ -1,0 +1,82 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "pgi-basic-cdk-v2-setup.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "pgi-basic-cdk-v2-setup.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "pgi-basic-cdk-v2-setup": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://926405661193/ap-south-1",
+      "properties": {
+        "templateFile": "pgi-basic-cdk-v2-setup.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::926405661193:role/cdk-hnb659fds-deploy-role-926405661193-ap-south-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::926405661193:role/cdk-hnb659fds-cfn-exec-role-926405661193-ap-south-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-926405661193-ap-south-1/eaf6b1b4351c8bc4c6befa45797bc40d746ca8494e8b6f90840b73ff1c54567a.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "pgi-basic-cdk-v2-setup.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::926405661193:role/cdk-hnb659fds-lookup-role-926405661193-ap-south-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "pgi-basic-cdk-v2-setup.assets"
+      ],
+      "metadata": {
+        "/pgi-basic-cdk-v2-setup/cdk-v2-basic-user-id/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "cdkv2basicuseridDCF81A6B"
+          }
+        ],
+        "/pgi-basic-cdk-v2-setup/cdk-v2-basic-group-id/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "cdkv2basicgroupid6C04AF94"
+          }
+        ],
+        "/pgi-basic-cdk-v2-setup/cdk-v2-basic-data-access-policy-id/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "cdkv2basicdataaccesspolicyid6C2DCF98"
+          }
+        ],
+        "/pgi-basic-cdk-v2-setup/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/pgi-basic-cdk-v2-setup/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/pgi-basic-cdk-v2-setup/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "pgi-basic-cdk-v2-setup"
+    }
+  }
+}

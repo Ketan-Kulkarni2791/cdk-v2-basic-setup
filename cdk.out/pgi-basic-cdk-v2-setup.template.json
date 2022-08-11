@@ -1,0 +1,104 @@
+{
+  "Resources": {
+    "cdkv2basicuseridDCF81A6B": {
+      "Type": "AWS::IAM::User",
+      "Properties": {
+        "Groups": [
+          {
+            "Ref": "cdkv2basicgroupid6C04AF94"
+          }
+        ],
+        "ManagedPolicyArns": [
+          {
+            "Ref": "cdkv2basicdataaccesspolicyid6C2DCF98"
+          }
+        ],
+        "UserName": "cdk-v2-basic-iam-user"
+      },
+      "Metadata": {
+        "aws:cdk:path": "pgi-basic-cdk-v2-setup/cdk-v2-basic-user-id/Resource"
+      }
+    },
+    "cdkv2basicgroupid6C04AF94": {
+      "Type": "AWS::IAM::Group",
+      "Properties": {
+        "GroupName": "cdk-v2-basic-iam-group"
+      },
+      "Metadata": {
+        "aws:cdk:path": "pgi-basic-cdk-v2-setup/cdk-v2-basic-group-id/Resource"
+      }
+    },
+    "cdkv2basicdataaccesspolicyid6C2DCF98": {
+      "Type": "AWS::IAM::ManagedPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "iam:DeleteAccessKey",
+                "iam:GetAccessKeyLastUsed",
+                "iam:UpdateAccessKey",
+                "iam:CreateAccessKey",
+                "iam:ListAccessKey"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                "arn:aws:iam::926405661193:user/${aws:username}",
+                "arn:aws:iam::926405661193:user/cdk_basic/${aws:username}"
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "Description": "",
+        "Path": "/"
+      },
+      "Metadata": {
+        "aws:cdk:path": "pgi-basic-cdk-v2-setup/cdk-v2-basic-data-access-policy-id/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzTTM1BMLC/WTU7J1s3JTNKrDi5JTM7WAQrFZybm6lWHFqcW6Tin5YFp96L80gIQD8LwTcxLTE9NCcjPyUyuBAmjCNSCRIJSi/NLi5JTa3UCKksy8vP0jfUMDfSMFLOKMzN1i0rzSjJzU/WCIDQAGK+ErI4AAAA="
+      },
+      "Metadata": {
+        "aws:cdk:path": "pgi-basic-cdk-v2-setup/CDKMetadata/Default"
+      }
+    }
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Type": "AWS::SSM::Parameter::Value<String>",
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+    }
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                  ],
+                  {
+                    "Ref": "BootstrapVersion"
+                  }
+                ]
+              }
+            ]
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+        }
+      ]
+    }
+  }
+}
